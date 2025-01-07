@@ -5,21 +5,22 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
+const { VITE_APP_PATH } = import.meta.env;
+
 function App() {
   const [count, setCount] = useState(0);
 
-  // useEffect(() => {
-  //   (async () => {
-  //     // json-server test
-  //     let apiUrl = "http://localhost:3000";
-  //     try {
-  //       const res = await axios.get(`${apiUrl}/comments`);
-  //       console.log(res);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   })();
-  // }, []);
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await axios.get(VITE_APP_PATH);
+        console.log(res);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
+
   return (
     <>
       <div>
